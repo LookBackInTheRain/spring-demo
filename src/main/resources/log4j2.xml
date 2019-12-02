@@ -23,7 +23,7 @@
     <loggers>
         <Root level="debug">
             <AppenderRef ref="stdout"/>
-            <!--<AppenderRef ref="INFO_PROD"/>-->
+            <AppenderRef ref="INFO_PROD"/>
         </Root>
     </loggers>
 </Configuration>
