@@ -4,6 +4,9 @@ import lombok.Getter;
 import lombok.Setter;
 import org.springframework.beans.BeanWrapper;
 import org.springframework.beans.PropertyAccessorFactory;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
 
 /**
@@ -16,10 +19,4 @@ import org.springframework.stereotype.Component;
 public class Person {
     private String name;
     private String gender;
-
-    public void init(){
-        BeanWrapper bw = PropertyAccessorFactory.forBeanPropertyAccess(this);
-
-    }
-
 }
