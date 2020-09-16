@@ -17,6 +17,7 @@
                 <SizeBasedTriggeringPolicy size="10MB"/>
             </Policies>
         </RollingFile>
+
     </appenders>
 
 
