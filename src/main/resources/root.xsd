@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://www.yuit.club"
+           xmlns="http://www.yuit.club">
+    <xs:element name="root">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:choice>
+                    <xs:element ref="bean"/>
+                </xs:choice>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="bean" type="xs:string">
+        <xs:complexType>
+            <xs:complexContent>
+                <xs:extension base="xs:attribute">
+                    <xs:attributeGroup ref="beanAttrGroup"/>
+                </xs:extension>
+            </xs:complexContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:attributeGroup name="beanAttrGroup">
+        <xs:attribute name="id" type="xs:string">
+            <xs:annotation>
+                <xs:documentation><![CDATA[
+	Can be used to create one or more aliases illegal in an (XML) id.
+	Multiple aliases can be separated by any number of spaces, commas,
+	or semi-colons (or indeed any mixture of the three).
+				]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="class" type="xs:string"></xs:attribute>
+    </xs:attributeGroup>
+
+</xs:schema>
+

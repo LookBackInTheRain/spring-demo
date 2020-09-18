@@ -6,4 +6,13 @@
 
     <context:component-scan base-package="club.yuit.beans"/>
 
+    <context:component-scan base-package="club.yuit.service"/>
+
+   <bean id="p1" class="club.yuit.beans.User">
+       <constructor-arg name="username" value="yuit"/>
+   </bean>
+
+    <alias name="p1" alias="user"/>
+
 </beans>
+
