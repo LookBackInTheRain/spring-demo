@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<root lazy-init="true" >
-    <bean id="user" class="club.yuit.beans.User">
-    </bean>
+<root>
+  <bean id="user" class="club.yuit.beans.User">
+  </bean>
   <bean id="person" class="club.yuit.beans.Person">
   </bean>
 </root>
