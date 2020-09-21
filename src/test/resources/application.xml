@@ -1,15 +1,18 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 
-  <bean id="user" class="club.yuit.beans.User"/>
+    <context:component-scan base-package="club.yuit.beans"/>
 
-  <bean id="person" class="club.yuit.beans.Person">
+    <context:component-scan base-package="club.yuit.service"/>
 
-  </bean>
+   <bean id="p1" class="club.yuit.beans.User">
+       <constructor-arg name="username" value="yuit"/>
+   </bean>
 
 
+    <alias name="p1" alias="user"/>
 
 </beans>

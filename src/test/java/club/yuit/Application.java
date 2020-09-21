@@ -10,10 +10,15 @@ import org.junit.runners.JUnit4;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.core.io.ClassPathResource;
+import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
+import java.rmi.server.ExportException;
 
 /**
  * @author yuit
@@ -39,20 +44,23 @@ public class Application {
     @Test
     public void xmlConfigurationTest() {
 
-      System.out.println(Application.class.getName());
-
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("classpath:application.xml");
-
-
 
         DocumentService documentService = context.getBean(DocumentService.class);
 
-      try {
-        documentService.parse();
-      } catch (IOException | SAXException | ParserConfigurationException e) {
-        e.printStackTrace();
-      }
+        try {
+            documentService.parse();
+        } catch (IOException | SAXException | ParserConfigurationException e) {
+            e.printStackTrace();
+        }
 
     }
+
+
+    @Test
+    public void parseXmlTest() throws Exception {
+      new DocumentService().parse();
+    }
+
 
 }

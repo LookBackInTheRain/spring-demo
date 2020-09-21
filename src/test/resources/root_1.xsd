@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.yuit.club"
+            targetNamespace="http://www.yuit.club" elementFormDefault="qualified">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+
+    <xsd:element name="root" >
+        <xsd:complexType>
+            <xsd:choice minOccurs="0" maxOccurs="unbounded">
+                <xsd:element ref="bean" />
+            </xsd:choice>
+            <xsd:attributeGroup ref="beansAttrGroup" />
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="bean">
+        <xsd:complexType>
+            <xsd:choice minOccurs="0" maxOccurs="unbounded">
+                <xsd:element name="props">
+                    <xsd:complexType>
+                        <xsd:sequence minOccurs="1" maxOccurs="unbounded">
+                            <xsd:element name="prop" >
+                                    <xsd:complexType>
+                                        <xsd:attribute name="name" type="xsd:all"/>
+                                        <xsd:attribute name="value" type="xsd:all"/>
+                                    </xsd:complexType>
+                            </xsd:element>
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+                <xsd:element ref="construct-arg"/>
+            </xsd:choice>
+            <xsd:attributeGroup ref="beanAttrGroup"/>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:attributeGroup name="beanAttrGroup" >
+        <xsd:attribute name="id" type="xsd:string"/>
+        <xsd:attribute name="class" type="xsd:string"/>
+    </xsd:attributeGroup>
+
+
+    <xsd:attributeGroup name="constructAttrGroup">
+        <xsd:attribute name="name" type="xsd:all"/>
+        <xsd:attribute name="value" type="xsd:all"/>
+        <xsd:attribute name="index" type="xsd:int"/>
+    </xsd:attributeGroup>
+
+    <xsd:element name="construct-arg">
+        <xsd:complexType>
+            <xsd:attributeGroup ref="constructAttrGroup"/>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:attributeGroup name="beansAttrGroup">
+        <xsd:attribute name="default-autowire" default="default" type="defaultable-boolean"/>
+        <xsd:attribute name="lazy-init" default="default" type="defaultable-boolean"/>
+    </xsd:attributeGroup>
+
+    <xsd:simpleType name="defaultable-boolean">
+        <xsd:restriction base="xsd:NMTOKEN">
+            <xsd:enumeration value="default"/>
+            <xsd:enumeration value="true"/>
+            <xsd:enumeration value="false"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+</xsd:schema>
