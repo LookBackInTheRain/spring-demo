@@ -7,9 +7,14 @@ import club.yuit.service.DocumentService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
+import org.springframework.beans.factory.BeanFactory;
+import org.springframework.beans.factory.support.DefaultListableBeanFactory;
+import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.core.env.ConfigurableEnvironment;
+import org.springframework.core.env.StandardEnvironment;
 import org.springframework.core.io.ClassPathResource;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
@@ -19,6 +24,9 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 import java.rmi.server.ExportException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * @author yuit
@@ -34,6 +42,7 @@ public class Application {
     public void annotationConfigurationTest() {
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(ApplicationConfiguration.class);
 
+
         System.out.println();
 
     }
@@ -44,15 +53,33 @@ public class Application {
     @Test
     public void xmlConfigurationTest() {
 
-        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("classpath:application.xml");
-
-        DocumentService documentService = context.getBean(DocumentService.class);
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext();
+        context.getEnvironment().setActiveProfiles("dev");
+        context.setConfigLocation("classpath:application.xml");
+        context.refresh();
+        User user = context.getBean(User.class);
 
         try {
-            documentService.parse();
+            user.parse();
         } catch (IOException | SAXException | ParserConfigurationException e) {
             e.printStackTrace();
         }
+
+    }
+
+    @Test
+    public void xmlBeanFactoryTest(){
+
+        DefaultListableBeanFactory factory = new DefaultListableBeanFactory();
+        XmlBeanDefinitionReader reader = new XmlBeanDefinitionReader(factory);
+        ClassPathResource resource = new ClassPathResource("application.xml");
+
+        ConfigurableEnvironment ev = new StandardEnvironment();
+        ev.setActiveProfiles("dev");
+        reader.setEnvironment(ev);
+        reader.loadBeanDefinitions(resource);
+
+        System.out.println("ccc");
 
     }
 
@@ -60,6 +87,13 @@ public class Application {
     @Test
     public void parseXmlTest() throws Exception {
       new DocumentService().parse();
+    }
+
+
+    @Test
+    public void otherTest(){
+        List<String> s = new ArrayList<>(Arrays.asList("asdasd","bbb"));
+        System.out.println(s.remove(0));
     }
 
 
