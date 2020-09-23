@@ -92,8 +92,15 @@ public class Application {
 
     @Test
     public void otherTest(){
-        List<String> s = new ArrayList<>(Arrays.asList("asdasd","bbb"));
-        System.out.println(s.remove(0));
+
+        Object o = null;
+        Object o1 = o;
+        o= new Object();
+
+        System.out.println(o1);
+        System.out.println(o);
+
+
     }
 
 
