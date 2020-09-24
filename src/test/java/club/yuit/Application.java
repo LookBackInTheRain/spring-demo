@@ -1,7 +1,7 @@
 package club.yuit;
 
 import club.yuit.beans.Person;
-import club.yuit.beans.User;
+import club.yuit.beans.Work;
 import club.yuit.config.ApplicationConfiguration;
 import club.yuit.service.DocumentService;
 import org.junit.Test;
@@ -57,14 +57,9 @@ public class Application {
         context.getEnvironment().setActiveProfiles("dev");
         context.setConfigLocation("classpath:application.xml");
         context.refresh();
-        User user = context.getBean(User.class);
+        Work work = context.getBean(Work.class);
 
-        try {
-            user.parse();
-        } catch (IOException | SAXException | ParserConfigurationException e) {
-            e.printStackTrace();
-        }
-
+        work.doWork();
     }
 
     @Test

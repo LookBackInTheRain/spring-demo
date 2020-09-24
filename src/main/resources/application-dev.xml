@@ -5,6 +5,14 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd"
 >
-    <context:component-scan base-package="club.yuit.beans" />
+    <context:component-scan base-package="club.yuit.beans">
+        <context:exclude-filter type="annotation" expression="club.yuit.annotation.Ignore"/>
+    </context:component-scan>
+
+    <bean  class="club.yuit.beans.Work" >
+        <lookup-method name="getWorker" bean="adminUser"/>
+    </bean>
+
+
 
 </beans>

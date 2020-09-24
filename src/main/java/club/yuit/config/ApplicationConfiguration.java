@@ -9,6 +9,6 @@ import org.springframework.context.annotation.Lazy;
  * @date 2019-12-02 20:26
  */
 @Configuration
-@ComponentScan("club.yuit.beans")
+/*@ComponentScan("club.yuit.beans")*/
 public class ApplicationConfiguration {
 }

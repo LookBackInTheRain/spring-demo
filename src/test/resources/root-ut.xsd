@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xsd:schema xmlns="http://www.yuit.club/scheam/ut"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:root="http://www.yuit.club/scheam/root"
+            targetNamespace="http://www.yuit.club/scheam/ut"
+            elementFormDefault="qualified"
+            attributeFormDefault="unqualified">
+
+    <xsd:import namespace="http://www.yuit.club/scheam/root" schemaLocation="root.xsd"/>
+
+    <xsd:element name="auto-config" >
+        <xsd:complexType>
+            <xsd:attribute name="value" type="xsd:boolean" default="true"/>
+        </xsd:complexType>
+    </xsd:element>
+
+
+</xsd:schema>

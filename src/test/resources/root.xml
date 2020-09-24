@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:context="http://www.springframework.org/schema/context"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+<root xmlns="http://www.yuit.club/scheam/root"
+      xmlns:ut="http://www.yuit.club/scheam/ut"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.yuit.club/scheam/root  root.xsd
+      http://www.yuit.club/scheam/ut  root-ut.xsd">
 
-  <bean id="user" class="club.yuit.beans.User"/>
+    <ut:auto-config value="false"/>
 
-  <bean id="person" class="club.yuit.beans.Person">
+    <bean id="user" class="club.yuit.beans.User"/>
+    <bean id="person" class="club.yuit.beans.Person">
 
-  </bean>
+    </bean>
 
 
-
-</beans>
+</root>
