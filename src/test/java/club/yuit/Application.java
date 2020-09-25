@@ -57,13 +57,14 @@ public class Application {
         context.getEnvironment().setActiveProfiles("dev");
         context.setConfigLocation("classpath:application.xml");
         context.refresh();
-        Work work = context.getBean(Work.class);
+        Object obj = context.getBean("&cf");
 
-        work.doWork();
+        System.out.println(obj.getClass().getName());
+
     }
 
     @Test
-    public void xmlBeanFactoryTest(){
+    public void xmlBeanFactoryTest() {
 
         DefaultListableBeanFactory factory = new DefaultListableBeanFactory();
         XmlBeanDefinitionReader reader = new XmlBeanDefinitionReader(factory);
@@ -74,6 +75,9 @@ public class Application {
         reader.setEnvironment(ev);
         reader.loadBeanDefinitions(resource);
 
+        ApplicationConfiguration configuration = factory.getBean(ApplicationConfiguration.class);
+
+
         System.out.println("ccc");
 
     }
@@ -81,20 +85,16 @@ public class Application {
 
     @Test
     public void parseXmlTest() throws Exception {
-      new DocumentService().parse();
+        new DocumentService().parse();
     }
 
 
     @Test
-    public void otherTest(){
+    public void otherTest() {
 
-        Object o = null;
-        Object o1 = o;
-        o= new Object();
+        SecurityManager manager = System.getSecurityManager();
 
-        System.out.println(o1);
-        System.out.println(o);
-
+        System.out.println(manager.getSecurityContext());
 
     }
 

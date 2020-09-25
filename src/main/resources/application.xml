@@ -2,19 +2,26 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:ut="http://www.yuit.club/scheam/root"
        xmlns:cc="http://www.springframework.org/schema/cache" xmlns:task="http://www.springframework.org/schema/task"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-        http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd"
+        http://www.springframework.org/schema/context
+         https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/cache
+          http://www.springframework.org/schema/cache/spring-cache.xsd
+           http://www.springframework.org/schema/task
+            http://www.springframework.org/schema/task/spring-task.xsd
+        http://www.yuit.club/scheam/root root.xsd"
 >
 
 
-    <bean id="cf" class="club.yuit.config.ApplicationConfiguration">
+    <bean id="cf" class="club.yuit.config.ApplicationConfiguration" name="apcf,;app">
         <meta key="c" value="ccc"/>
+        <ut:bean id="cs" class="bs"/>
     </bean>
     <bean id="mainTask" class="club.yuit.task.MainTask"/>
 
     <task:scheduled-tasks>
-        <task:scheduled ref="mainTask" method="doWork" cron="* 1 * * * ? "/>
+        <task:scheduled ref="mainTask" method="doWork" cron="* * 1 * * ? "/>
     </task:scheduled-tasks>
 
 
