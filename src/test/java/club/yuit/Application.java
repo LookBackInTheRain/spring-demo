@@ -91,9 +91,7 @@ public class Application {
 
     @Test
     public void otherTest() {
-
         SecurityManager manager = System.getSecurityManager();
-
         System.out.println(manager.getSecurityContext());
 
     }
