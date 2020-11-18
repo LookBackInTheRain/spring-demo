@@ -11,4 +11,9 @@ import org.springframework.context.annotation.Lazy;
 @Configuration
 /*@ComponentScan("club.yuit.beans")*/
 public class ApplicationConfiguration {
+
+    public int anInt(){
+        return 10;
+    }
+
 }

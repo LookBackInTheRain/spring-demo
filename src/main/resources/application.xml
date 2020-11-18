@@ -14,7 +14,7 @@
 >
 
 
-    <bean id="cf" class="club.yuit.config.ApplicationConfiguration" name="apcf,;app">
+    <bean id="cf" class="club.yuit.config.ApplicationConfiguration" name="apcf,;app" >
         <meta key="c" value="ccc"/>
         <ut:bean id="cs" class="bs"/>
     </bean>
@@ -31,4 +31,5 @@
     <beans profile="production">
         <import resource="application-production.xml"/>
     </beans>
+
 </beans>

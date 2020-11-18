@@ -11,4 +11,8 @@ public class MainTask {
         System.out.println("task working");
     }
 
+
+    public Double aDouble(){
+        return 12D;
+    }
 }

@@ -4,6 +4,7 @@ import club.yuit.beans.Person;
 import club.yuit.beans.Work;
 import club.yuit.config.ApplicationConfiguration;
 import club.yuit.service.DocumentService;
+import club.yuit.service.UserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
@@ -71,11 +72,17 @@ public class Application {
         ClassPathResource resource = new ClassPathResource("application.xml");
 
         ConfigurableEnvironment ev = new StandardEnvironment();
-        ev.setActiveProfiles("dev");
+        ev.setActiveProfiles("production");
         reader.setEnvironment(ev);
         reader.loadBeanDefinitions(resource);
 
-        ApplicationConfiguration configuration = factory.getBean(ApplicationConfiguration.class);
+        //ApplicationConfiguration configuration = factory.getBean(ApplicationConfiguration.class);
+
+
+        UserService u = factory.getBean(UserService.class);
+
+        System.out.println(u.getById(""));
+
 
 
         System.out.println("ccc");
